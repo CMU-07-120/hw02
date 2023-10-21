@@ -1,0 +1,84 @@
+#use <conio>
+#use <string>
+
+void m(string[] S, int lower, int mid, int upper) {
+  string[] B = alloc_array(string, upper-lower);
+
+  int i = lower; 
+  int j = mid; 
+  int k = 0;
+  
+  while (i < mid && j < upper) {
+    // Q(1): I think I need to hash these strings before I compare them, no?
+    //       But, the order doesn't seem right. Should I hash the strings?
+    int hash_i = hash_string(S[i]);
+    int hash_j = hash_string(S[j]);
+
+    if (hash_i < hash_j) {
+      B[k] = S[i];
+      i++;
+    } else {
+      B[k] = S[j];           
+      j++;
+    }
+
+    k++;
+  }
+
+  while (i < mid) {
+    B[k] = S[i];
+    i++;
+    k++;
+  }
+
+  while (j < upper) {
+    B[k] = S[j];
+    j++;
+    k++;
+  }
+
+  for (k = 0; k < upper-lower; k++) {
+    S[lower+k] = B[k];
+  }
+}
+
+/* sort the string array 
+   Q(2): Once the hasing is fixed, does this still work? What's
+         missing? 
+   Q(3): What kind of sort is this? Do you know?
+*/
+void sort(string[] S, int lower, int upper) {
+  if (upper-lower <= 1) {
+    return;
+  } 
+  else {
+    int mid = lower + (upper - lower) / 2;
+    sort(S, lower, mid);
+    m(S, lower, mid, upper);
+  }
+}
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  // iterate over the pre-sorted array of favorites
+  println("Before:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  // call the sort fn
+  sort(favs, 0, length);
+
+  // iterate over the sorted array of favorites
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  return 0;
+}

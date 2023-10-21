@@ -1,0 +1,50 @@
+#use <conio>
+#use <string>
+
+/* swap strings */
+void swap(string[] S, int i, int j) {
+  string tmp = S[i];
+  S[i] = S[j];
+  S[j] = tmp;
+}
+
+/* sort the string array.
+   Q(1): The results should be returned in alphabetical order, but
+   something seems off? What am I getting instead? 
+   Q(2): Am I iterating over the array efficiently?
+   Q(3): What kind of sort is this? Do you know?
+*/
+void sort(string[] S, int n) {
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      if (string_compare(S[j], S[j + 1]) < 0) {
+        swap(S, j, j + 1);
+      }
+    }
+  }
+}
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  // iterate over the pre-sorted array of favorites
+  println("Before:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  // call the sort fn
+  sort(favs, length);
+
+  // iterate over the sorted array of favorites
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  return 0;
+}
