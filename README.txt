@@ -1,5 +1,5 @@
-07-120 Introduction to Software Contstruction
-Expectations
+07-120 Introduction to Software Construction
+hw02: Expectations in Code
 
 Files you will modify:
     sort1.c0            - Different code for sorting your favorites in alphabetical order
