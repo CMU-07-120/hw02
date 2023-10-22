@@ -43,7 +43,7 @@ void m(string[] S, int lower, int mid, int upper) {
 }
 
 /* sort the string array 
-   Q(2): Once the hasing is fixed, does this still work? What's
+   Q(2): Once the hashing is fixed, does this still work? What's
          missing? 
    Q(3): What kind of sort is this? Do you know?
 */
