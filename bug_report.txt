@@ -1,0 +1,28 @@
+* Sorting function: [one of sort1.c0, sort2.c0, or sort3.c0]
+
+* Defect Observed:
+
+  - Contents of favorites.txt:
+
+  - Expected output:
+
+  - Actual (incorrect) output:
+
+* Hypothesis about what is going wrong:
+
+* Experiments that can confirm or reject the hypothesis (note, this might
+  include adding print statements to the code, making changes to the code, and
+  running with different variations of the input file):
+
+* Upon experimenting, the hypothesis should be confirmed or rejected.
+
+  - If rejected, then develop a new hypothesis:
+
+  - If needed: new experiment:
+
+Now, make the necessary changes to fix the program (note: these changes should
+be committed as a single commit).
+
+* Commit the (short) SHA of the fix(es) (This should be a 7-digit string):
+
+* Challenge (BONUS): what algorithm do you think is being implemented in this program?

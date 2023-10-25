@@ -12,7 +12,7 @@ void swap(string[] S, int i, int j) {
    Q(1): The results should be returned in alphabetical order, but
    something seems off? What am I getting instead? 
    Q(2): Am I iterating over the array efficiently?
-   Q(3): What kind of sort is this? Do you know?
+   Q(3)[BONUS]: What kind of sort is this? Do you know?
 */
 void sort(string[] S, int n) {
   for (int i = 0; i < n; i++) {

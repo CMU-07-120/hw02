@@ -11,7 +11,7 @@ void swap(string[] S, int i, int j) {
 /* Q(1): The results should be returned in alphabetical order, but 
          what is being returned instead? 
    Q(2): Is partitioning working over the right range(s)?
-   Q(3): What kind of sort is this? Do you know?
+   Q(3)[BONUS]: What kind of sort is this? Do you know?
 */
 int partition(string[] S, int lower, int pivot_idx, int upper) {
   string pivot = S[pivot_idx];
