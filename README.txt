@@ -14,9 +14,6 @@ Data:
 
 ==========================================================
 
-Loading all the libraries in coin to play with them:
-    % coin lib/*.c0
-
 Compiling sort functions:
     % cc0 -d -w -o sort1 lib/*.c0 sort1.c0
     % ./sort1
