@@ -58,6 +58,7 @@ sort3
 
 # Private
 !*.private
-sort1_correct.c0
-sort2_correct.c0
-sort3_correct.c0
+
+# OSX
+.DS_Store
+*.*~

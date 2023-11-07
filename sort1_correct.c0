@@ -1,0 +1,42 @@
+#use <conio>
+#use <string>
+
+void swap(string[] S, int i, int j) {
+  string tmp = S[i];
+  S[i] = S[j];
+  S[j] = tmp;
+}
+
+void sort(string[] S, int n) {
+  // n - 1 passes => efficiency
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+      // correct use of string_compare for ascending order and case-insensitive.
+      if (string_compare(string_tolower(S[j]), string_tolower(S[j + 1])) > 0) {
+        swap(S, j, j + 1);
+      }
+    }
+  }
+}
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  println("Before:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  sort(favs, length);
+
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  return 0;
+}
