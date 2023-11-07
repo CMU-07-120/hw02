@@ -1,0 +1,76 @@
+#use <conio>
+#use <string>
+
+void m(string[] S, int lower, int mid, int upper) {
+  string[] B = alloc_array(string, upper-lower);
+
+  int i = lower; 
+  int j = mid; 
+  int k = 0;
+  
+  // We do not use hashing here, which would create something that's not in
+  // an alphabetical order. 
+  // Also: case-insensitive comparison.
+  while (i < mid && j < upper) {
+    if (string_compare(string_tolower(S[i]), string_tolower(S[j])) < 0) {
+      B[k] = S[i];
+      i++;
+    } else {
+      B[k] = S[j];           
+      j++;
+    }
+
+    k++;
+  }
+
+  while (i < mid) {
+    B[k] = S[i];
+    i++;
+    k++;
+  }
+
+  while (j < upper) {
+    B[k] = S[j];
+    j++;
+    k++;
+  }
+
+  for (k = 0; k < upper-lower; k++) {
+    S[lower+k] = B[k];
+  }
+}
+
+void sort(string[] S, int lower, int upper) {
+  if (upper-lower <= 1) {
+    return;
+  } 
+  else {
+    int mid = lower + (upper - lower) / 2;
+    // Sort the two halves (not just a portion of it)
+    sort(S, lower, mid);
+    sort(S, mid, upper);
+    m(S, lower, mid, upper);
+  }
+}
+
+int main() {
+  bundle_t S = read_lines("favorites.txt");
+  int length = string_bundle_length(S);
+  string[] favs = string_bundle_array(S);
+
+  println("Before:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  sort(favs, 0, length);
+
+  println("After:");
+  for (int i = 0; i < length; i++) {
+    printf("(%d) %s\n", i, favs[i]);
+  }
+  println("--------------------");
+
+  return 0;
+}
